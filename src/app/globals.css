@@ -40,3 +40,20 @@ body {
 .animate-slide-in-left {
   animation: slide-in-left 1s ease-in-out;
 }
+
+@keyframes slide-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);   
+  }
+}
+
+
+.animate-slide-in-up{
+  animation: slide-in-up 1s ease-in-out;
+}
+

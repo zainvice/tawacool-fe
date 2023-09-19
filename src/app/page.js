@@ -141,14 +141,18 @@ export default function Home() {
         </header>
       </div>
       {/* Crousel */}
-      <div className="carousel w-full ">
+      <div className="carousel w-full overflow-hidden">
         <div
           id="slide1"
           className={`carousel-item relative w-full ${
             activeSlide === 1 ? "block" : "hidden"
           }`}
         >
-          <img src="./logo.png" className="w-full h-[80vh]" alt="Slide 1" />
+          <img
+            src="./logo.png"
+            className="w-full h-full object-cover"
+            alt="Slide 1"
+          />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <span
               className={`mx-auto mb-80 animate-slide-in-left ${
@@ -174,7 +178,11 @@ export default function Home() {
             activeSlide === 2 ? "block" : "hidden"
           }`}
         >
-          <img src="./download.png" className="w-full h-[80vh]" alt="Slide 2" />
+          <img
+            src="./download.png"
+            className="w-full h-full object-cover"
+            alt="Slide 2"
+          />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <span className="mx-auto mb-80">
               <label className="text-white font-bold text-4xl">
@@ -195,7 +203,11 @@ export default function Home() {
             activeSlide === 3 ? "block" : "hidden"
           }`}
         >
-          <img src="./logo.png" className="w-full h-[80vh]" alt="Slide 3" />
+          <img
+            src="./logo.png"
+            className="w-full h-full object-cover"
+            alt="Slide 3"
+          />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <span className="mx-auto mb-80">
               <label className="text-white font-bold text-4xl">
@@ -216,7 +228,11 @@ export default function Home() {
             activeSlide === 4 ? "block" : "hidden"
           }`}
         >
-          <img src="./download.png" className="w-full h-[80vh]" alt="Slide 4" />
+          <img
+            src="./download.png"
+            className="w-full h-full object-cover"
+            alt="Slide 4"
+          />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <span className="mx-auto mb-80">
               <label className="text-white font-bold text-4xl">
@@ -233,40 +249,62 @@ export default function Home() {
         </div>
       </div>
       {/* Circle */}
-      <div className="relative w-full h-screen bg-gradient-to-r from-orange-200 via-white to-[#ccf2ea] z-10">
-        <h1 className="relative top-10 left-1/2 transform -translate-x-1/2 text-6xl sm:text-6xl text-center text-black">
-          TawaKCool Adventure...
+      <div className="w-full bg-gradient-to-r from-orange-200 via-white to-[#ccf2ea] py-10">
+        <h1 className="text-3xl font-medium text-center text-black pb-10">
+          TawakCool Adventure...
         </h1>
-        <div className="relative w-96 h-96 sm:w-[30rem] sm:h-[30rem] rounded-full bg-[#91d3d0] top-[50%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center overflow-auto">
-          <div className="w-80 h-80 sm:w-[28rem] sm:h-[28rem] rounded-full bg-[#91d3d0] flex flex-col items-center justify-center">
-            <p className="text-lg sm:text-2xl font-bold text-black mb-4">
-              Where cool women unite,
-            </p>
-            <p className="mb-4 ml-4 text-base sm:text-lg items-center">
-              {texts[currentTextIndex]}
-            </p>
+        <div className="flex justify-center items-stretch">
+          <div className="flex-1 border-b-8 border-[#F36523]" />
+          <div
+            className={`
+            relative p-6
+            before:border-[#F36523] after:border-[#F36523]
+            before:inline-block before:border-b-0 after:border-t-0 before:absolute before:w-full before:h-2/3 before:border-8 before:border-r-0 before:left-0 before:-top-0 before:sm:rounded-tl-[15rem] before:rounded-tl-[10rem]
+            after:absolute after:w-full after:h-2/3 after:border-8 after:border-l-0 after:right-0 after:-bottom-0 after:sm:rounded-br-[15rem] after:rounded-br-[10rem]
+          `}
+          >
+            <div className="w-80 h-80 sm:w-[28rem] sm:h-[28rem] rounded-full bg-[#91d3d0] flex flex-col items-center justify-center overflow-hidden">
+              <p className="text-lg sm:text-2xl font-bold text-black mb-4">
+                Where cool women unite,
+              </p>
+              {texts.map((text, index) => (
+                <p
+                  key={index}
+                  className={`mb-4 ml-4 text-base sm:text-lg text-center h-10 ${
+                    text === texts[currentTextIndex] ? "block" : "hidden"
+                  } ${
+                    currentTextIndex % 2 == 0
+                      ? "animate-slide-in-left"
+                      : "animate-slide-in-up"
+                  }`}
+                >
+                  {text}
+                </p>
+              ))}
+            </div>{" "}
           </div>
+          <div className="flex-1 border-t-8 border-[#F36523]" />
         </div>
       </div>
       {/* divider */}
       <div className="bg-white w-full h-28"></div>
 
       {/*  OUR Services */}
-      <div className="relative w-full min-h-screen bg-gradient-to-r from-orange-200 via-white to-[#ccf2ea] z-10 flex flex-col items-center">
-        <h1 className="text-4xl sm:text-6xl text-center text-black mt-10 sm:mt-20">
+      <div className="relative w-full min-h-screen bg-gradient-to-r from-orange-200 via-white to-[#ccf2ea] px-4 flex flex-col items-center">
+        <h1 className="text-5xl text-center text-black mt-10 sm:mt-20">
           Our Services
         </h1>
-        <div className="w-full mt-8 sm:mt-20 flex flex-col sm:flex-row justify-center items-center gap-8">
-          <div className="w-full sm:w-64 text-center bg-white shadow-lg flex flex-col rounded-2xl mb-6">
+        <div className="w-full mt-8 sm:mt-20 flex flex-col md:flex-row justify-center items-center gap-8">
+          <div className="w-full md:w-64 text-center bg-white shadow-lg flex flex-col rounded-2xl mb-6">
             <div className="w-full justify-start flex flex-col">
               <h4
-                className="border-2 text-2xl sm:text-3xl py-4 bg-green-700 rounded-t-2xl"
+                className="border-2 text-2xl font-bold py-4 bg-green-700 rounded-t-2xl"
                 id="whoobe-3mr7n"
               >
                 Ladies Hike
               </h4>
               <p
-                className="border-green-700 border-2 text-base sm:text-lg"
+                className="border-green-700 border-2 text-base p-2"
                 id="whoobe-950fw"
               >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -288,16 +326,16 @@ export default function Home() {
             </button>
           </div>
 
-          <div className="w-full sm:w-64 text-center bg-white shadow-lg flex flex-col rounded-2xl mb-6">
+          <div className="w-full md:w-64 text-center bg-white shadow-lg flex flex-col rounded-2xl mb-6">
             <div className="w-full justify-start flex flex-col">
               <h4
-                className="border-2 text-2xl sm:text-3xl py-4 bg-[#6ad5cb] rounded-t-2xl"
+                className="border-2 text-2xl font-bold py-4 bg-[#6ad5cb] rounded-t-2xl"
                 id="whoobe-3mr7n"
               >
                 Family Events
               </h4>
               <p
-                className="border-[#6ad5cb] border-2 text-base sm:text-lg"
+                className="border-[#6ad5cb] border-2 text-base p-2"
                 id="whoobe-950fw"
               >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -319,16 +357,16 @@ export default function Home() {
             </button>
           </div>
 
-          <div className="w-full sm:w-64 text-center bg-white shadow-lg flex flex-col rounded-2xl mb-6">
+          <div className="w-full md:w-64 text-center bg-white shadow-lg flex flex-col rounded-2xl mb-6">
             <div className="w-full justify-start flex flex-col">
               <h4
-                className="border-2 text-2xl sm:text-3xl py-4 bg-[#f36523] rounded-t-2xl"
+                className="border-2 text-2xl font-bold py-4 bg-[#f36523] rounded-t-2xl"
                 id="whoobe-3mr7n"
               >
                 Card Info
               </h4>
               <p
-                className="border-[#f36523] border-2 text-base sm:text-lg"
+                className="border-[#f36523] border-2 text-base p-2"
                 id="whoobe-950fw"
               >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -355,7 +393,7 @@ export default function Home() {
       {/* Email Service */}
       <div className="bg-[#f36523] p-4 md:p-8 lg:p-16 h-auto md:h-52 flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="inline text-center md:text-left">
-          <p className="text-2xl md:text-3xl lg:text-4xl">
+          <p className="text-2xl">
             Get the Latest from{" "}
             <span className="text-black font-bold">TawakCool Adventures</span>
           </p>
@@ -374,24 +412,19 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="flex flex-col items-center bg-black text-white text-center h-full">
-        <h1 className="text-6xl sm:text-6xl text-center mb-4 mt-6">
-          TawakCool Adventures
-        </h1>
+        <h1 className="text-3xl md:text-5xl text-center mb-4 mt-6">TawakCool Adventures</h1>
         <div className="flex justify-between items-center w-full px-10">
-          <p className="text-xl sm:text-xl text-center mb-2 mt-2 flex-grow">
+          <p className="text-xl text-center mb-2 mt-2 flex-grow">
             Where Adventure Begins
           </p>
-          <button className="text-white bg-[#f36523] rounded-full w-60 h-12 text-2xl">
-            Contact us
-          </button>
         </div>
 
         <div className="container p-6 lg:text-left">
           <div className="grid place-items-center md:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* First links section */}
-            <div className="mb-6">
+            <div className="order-1 lg:-order-1 mb-6">
               <h5 className="mb-4 font-bold text-xl uppercase">Connect</h5>
-              <ul className="list-none text-lg">
+              <ul className="list-none text-base flex flex-col items-center lg:items-start">
                 <li className="mb-4 flex items-center">
                   <FaInstagram className="mr-2" />
                   <Link href="#" className="">
@@ -411,9 +444,14 @@ export default function Home() {
                   </Link>
                 </li>
                 <li className="mb-4 flex items-center">
-                  <FaCopyright className="mr-2" />
-                  <Link href="#" className="">
-                    2003 TawakCool Adventure
+                  <button className="text-white bg-[#f36523] rounded-full w-44 h-10 text-xl">
+                    Contact us
+                  </button>
+                </li>
+                <li>
+                  <Link href="#" className="flex items-center">
+                    <FaCopyright className="mr-2" />
+                    <span>2003 TawakCool Adventure</span>
                   </Link>
                 </li>
               </ul>
@@ -422,7 +460,7 @@ export default function Home() {
             {/* Second links section */}
             <div className="mb-6">
               <h5 className="mb-4 font-bold text-xl uppercase">Our Stories</h5>
-              <ul className="list-none text-lg">
+              <ul className="list-none text-base">
                 <li className="mb-4">
                   <Link href="#" className="">
                     Ladies Hike
@@ -449,7 +487,7 @@ export default function Home() {
             {/* Third links section */}
             <div className="mb-6 mt-10">
               <h5 className="mb-4 font-bold text-xl uppercase">Company</h5>
-              <ul className="list-none text-lg">
+              <ul className="list-none text-base">
                 <li className="mb-4">
                   <Link href="#" className="">
                     About us
@@ -481,7 +519,7 @@ export default function Home() {
             {/* Fourth links section */}
             <div className="mb-6">
               <h5 className="mb-4 font-bold text-xl uppercase">Get Help</h5>
-              <ul className="list-none text-lg">
+              <ul className="list-none text-base">
                 <li className="mb-4">
                   <Link href="#" className="">
                     Sign up/Login
